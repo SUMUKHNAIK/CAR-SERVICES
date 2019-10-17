@@ -31,7 +31,7 @@
                         echo '<p style="color:red;">UserName Taken</p>';    
                     }
                 
-					else if($_GET['signup']=="success"){
+					else if($_GET["signup"]=="success"){
 						echo '<p class="signupsuccess">Sign up successfull</p>';
 					}
 				}
@@ -66,7 +66,7 @@
                     </div>
 
 
-                    <button type = "submit" name="signup-submit" class="btn btn-primary"> Sign Up </button
+                    <button type = "submit" name="signup" class="btn btn-primary"> Sign Up </button
 						<p>
 							Already registered!? <a href="home.php">login</a>
 						</p>

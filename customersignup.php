@@ -1,7 +1,7 @@
 <?php
 
 //session_start();
-if(isset($_POST['signup-submit'])){
+if(isset($_POST['signup'])){
 
 require 'configure.php';
 $errors = array();
@@ -53,21 +53,21 @@ else{
             exit();
         }
         else{
-			$hashedpwd = md5($pswd1);
-            $success_query = "insert into customer_signup (user_name,email,password1,password2,address,contact) values($name,email,$hashedpwd,$hashedpwd,$address,$contact)";
+            $success_query = "insert into customer_signup(user_name,email,password1,password2,address,contact) values(?,?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt,$success_query)) {
             header("Location:signup.php?error=sqlerror");
             exit();
             }
-            else{
-				
-              /*$hashedPwd1 = password_hash($pswd1,PASSWORD_DEFAULT);
-              mysqli_stmt_bind_param($stmt,"ssisss",$name,$email,$hashedPwd1,$hashedPwd1,$address,$contact);*/
-              mysqli_stmt_execute($stmt);
-              mysqli_stmt_store_result($stmt);
-              header("Location:home.php?signup=success");
-              exit();
+            else{    
+				$hashedPwd = password_hash($pswd1,PASSWORD_DEFAULT);    
+				mysqli_stmt_bind_param($stmt,"sssssi",$name,$email,$hashedPwd,$hashedPwd,$address,$contact);
+				//mysqli_stmt_bind_param($stmt,"sssssi",$name,$email,$pswd1,$pswd2,$address,$contact);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+				header("Location:home.php?signup=success");
+				exit();
+            
             }
         }
     mysqli_stmt_close($stmt);
@@ -80,6 +80,7 @@ else{
     header("Location:signup.php");
     exit();
 }
+
 
 
 

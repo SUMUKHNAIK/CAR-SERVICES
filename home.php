@@ -66,7 +66,7 @@
                         <input type="Password" name="password1" class="form-control">
                     </div>
 
-                    <button type = "submit" class="btn btn-primary"> Login </button>
+                    <button type = "submit" name="signup" class="btn btn-primary"> Login </button>
                 </form>
 			<b>Not yet a member?</b> <a href="signup.php">Sign up</a>
 			</p>

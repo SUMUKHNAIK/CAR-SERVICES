@@ -60,8 +60,8 @@ else{
             exit();
             }
             else{    
-				$hashedPwd = password_hash($pswd1,PASSWORD_DEFAULT);    
-				mysqli_stmt_bind_param($stmt,"sssssi",$name,$email,$hashedPwd,$hashedPwd,$address,$contact);
+				//$hashedPwd = password_hash($pswd1,PASSWORD_DEFAULT);    
+				mysqli_stmt_bind_param($stmt,"sssssi",$name,$email,$pswd1,$pswd2,$address,$contact);
 				//mysqli_stmt_bind_param($stmt,"sssssi",$name,$email,$pswd1,$pswd2,$address,$contact);
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_store_result($stmt);
